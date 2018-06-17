@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+    <h4>Our Collections</h4>
+    </div>
+    <div class="row">
+    <h6>Showing 6 of 50 collections</h6>
+    </div>
+    <div class="row">
+      <div class="col-3" ng-repeat="item in data_raw.slice(0,3)" ng-click="openCollection(item.title)">
+        <img src="http://via.placeholder.com/350x150" style="width: 99%;" alt="">
+        <h6>{{item.title}}</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3" ng-repeat="item in data_raw.slice(1,4)" ng-click="openCollection(item.title)">
+        <img src="http://via.placeholder.com/350x150" style="width: 99%;" alt="">
+        <h6>{{item.title}}</h6>
+      </div>
+    </div>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="#/collections">Prev</a></li>
+        <li class="page-item"><a class="page-link" href="#/collections">1</a></li>
+        <li class="page-item"><a class="page-link" href="#/collections">2</a></li>
+        <li class="page-item"><a class="page-link" href="#/collections">3</a></li>
+        <li class="page-item"><a class="page-link" href="#/collections">Next</a></li>
+      </ul>
+    </nav>
+</div>

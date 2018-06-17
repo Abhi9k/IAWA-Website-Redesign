@@ -1,0 +1,120 @@
+
+
+        <div class="container">
+            <div class="jumbotron">
+                <h4>
+                    International Archive of Women In Architecture
+                </h4>
+                <div class="title_description">
+                    A visual exhibit of selected items from the International Archive of Women in Architecture, a joint partnership between the College of Architecture and Urban Studies and the University Libraries at Virginia Tech
+                </div>
+                <div class="input-group mb-3" style="margin-top: 20px;">
+                  <input type="text" class="form-control" ng-model="searchTerm"  placeholder="Architects,Title,..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" ng-click="searchQuery()">Search</button>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col col-2 filter-box">
+                    <div class="row"> <h6>Filter Search Results</h6> </div>
+                    
+                    <div class="row filter-items">
+                        <button type="button" class="btn btn-outline-secondary" data-toggle="collapse" data-target="#architect-filter" style="text-align: left; width:100%;">Architect</button>
+            
+                        <div id="architect-filter" class="collapse">
+                          <div class="form-check" ng-repeat="item in architects">
+                            <input type="checkbox" class="form-check-input" id="item.architect" ng-checked="item.isChecked" ng-model="item.isChecked" ng-change="filterChange(item, 'architect')">
+                            <label class="form-check-label" for="item.architect">{{item.architect}}</label>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row filter-items">
+                        <button type="button" class="btn btn-outline-secondary"  data-toggle="collapse" data-target="#year-filter" style="text-align: left; width:100%;">Year</button>
+
+                        <div id="year-filter" class="collapse">
+                          <div class="form-check" ng-repeat="item in years">
+                            <input type="checkbox" class="form-check-input" id="item.year" ng-checked="item.isChecked" ng-model="item.isChecked" ng-change="filterChange(item, 'year')">
+                            <label class="form-check-label" for="item.year">{{item.year}}</label>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-10">
+                    <div class="row justify-content-between">
+                        <div class="col-4"> <h6>Search Results</h6> </div>
+                        <div class="col-3">
+                            <div class="btn-group">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                View As
+                              </button>
+                              <div class="dropdown-menu">
+                                <button class="dropdown-item" type="button" ng-click="changeView('list')">List</button>
+                                <button class="dropdown-item" type="button" ng-click="changeView('gallery')">Gallery</button>
+                              </div>
+                            </div>
+                            <div class="btn-group">
+                              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sort By
+                              </button>
+                              <div class="dropdown-menu">
+                                <button class="dropdown-item" type="button" ng-click="sortResults('title')">Title</button>
+                                <button class="dropdown-item" type="button" ng-click="sortResults('year')">Year</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="checkViewType('list');">
+                      <div class="row search-result-item" ng-repeat="item in data">
+                          <div class="col-auto"><a href="#/collections/item/document/{{item.title}}"><img src="http://via.placeholder.com/350x150" width="150" height="90" class="d-inline-block align-top" alt=""></a></div>
+                          <div class="col">
+                              <h5><a href="#/collections/item/document/{{item.title}}">{{item.title}}</a></h5>
+                              <h6>{{item.architect}},{{item.year}}</h6>
+                              <div class="search_result_item_description">{{item.description}}</div> 
+                          </div>
+                      </div>
+                    </div>
+                    <div ng-show="checkViewType('gallery');" style="margin-left:20px;">
+                      <div class="row search-result-item" ng-repeat="item in data">
+                        <div class="col-6">
+                          <div class="row">
+                            <div class="col"><a href="#/collections/item/document/{{item.title}}"><img src="http://via.placeholder.com/350x150" style="width:99%" alt=""></a></div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                                <h5><a href="#/collections/item/document/{{item.title}}">{{item.title}}</a></h5>
+                                <h6>{{item.architect}},{{item.year}}</h6>
+                                <div class="search_result_item_description">{{item.description}}</div> 
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="row">
+                            <div class="col"><a href="#/collections/item/document/{{item.title}}"><img src="http://via.placeholder.com/350x150" style="width:99%" alt=""></a></div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                                <h5><a href="#/collections/item/document/{{item.title}}">{{item.title}}</a></h5>
+                                <h6>{{item.architect}},{{item.year}}</h6>
+                                <div class="search_result_item_description">{{item.description}}</div> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#/">Prev</a></li>
+                <li class="page-item"><a class="page-link" href="#/">1</a></li>
+                <li class="page-item"><a class="page-link" href="#/">2</a></li>
+                <li class="page-item"><a class="page-link" href="#/">3</a></li>
+                <li class="page-item"><a class="page-link" href="#/">Next</a></li>
+              </ul>
+            </nav>
+        </div>
